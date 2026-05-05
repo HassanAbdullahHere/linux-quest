@@ -457,6 +457,44 @@ function renderScenario(scenario, trackId, trackScenarios) {
   document.getElementById('sp-body').hidden = false;
 }
 
+/* ── Keyboard Shortcuts ──────────────────────────────────────────────────────────── */
+function initKeyboardShortcuts(trackId, trackScenarios, currentId) {
+  document.addEventListener('keydown', (e) => {
+    const tag = e.target.tagName;
+
+    if (tag === 'INPUT' || tag === 'TEXTAREA' || tag === 'BUTTON') return;
+    if (e.repeat) return;
+
+    const key = e.key.toLowerCase();
+
+    if (key === 'h') {
+      const btn = document.querySelector('.sp-hint-btn');
+      if (btn) btn.click();
+    }
+
+    if (key === 's') {
+      const btn = document.getElementById('sp-solution-toggle');
+      if (btn) btn.click();
+    }
+
+    if (trackId && trackScenarios) {
+      const idx = trackScenarios.indexOf(currentId);
+
+      if (e.key === 'ArrowLeft' && idx > 0) {
+        const prevId = trackScenarios[idx - 1];
+        window.location.href =
+          `scenario.html?id=${encodeURIComponent(prevId)}&track=${encodeURIComponent(trackId)}`;
+      }
+
+      if (e.key === 'ArrowRight' && idx < trackScenarios.length - 1) {
+        const nextId = trackScenarios[idx + 1];
+        window.location.href =
+          `scenario.html?id=${encodeURIComponent(nextId)}&track=${encodeURIComponent(trackId)}`;
+      }
+    }
+  });
+}
+
 /* ── Bootstrap ───────────────────────────────────────────────────────── */
 async function init() {
   initNav();
@@ -487,6 +525,7 @@ async function init() {
     const scenario = await loadScenario(id, trackId);
     document.getElementById('sp-loading').hidden = true;
     renderScenario(scenario, trackId, trackScenarios);
+    initKeyboardShortcuts(trackId, trackScenarios, scenario.id);
     initSolutionToggle(scenario.solution || '');
     initCompleteBtn(scenario.id, trackId, trackScenarios);
     initScrollAnimations();
