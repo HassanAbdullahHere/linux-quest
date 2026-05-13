@@ -1,4 +1,4 @@
-name: Deploy to GitHub Pages
+name: Deploy to S3 + CloudFront
 
 on:
   push:
@@ -7,31 +7,59 @@ on:
 
 permissions:
   contents: read
-  pages: write
   id-token: write
 
 concurrency:
-  group: "pages"
+  group: "deploy"
   cancel-in-progress: false
 
 jobs:
-  deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+  validate:
+    name: Validate
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Setup Pages
-        uses: actions/configure-pages@v4
-
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
+      - name: Validate HTML
+        uses: validator/html-validator@v1
         with:
-          path: '.'
+          file-pattern: '*.html'
 
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+      - name: Check for broken links
+        uses: lycheeverse/lychee-action@v1
+        with:
+          args: --no-progress '*.html'
+          fail: true
+
+  deploy:
+    name: Deploy
+    needs: validate
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: arn:aws:iam::623859664281:role/LinuxQuestDeployRole
+          aws-region: ap-south-1
+
+      - name: Sync to S3
+        run: |
+          aws s3 sync . s3://linuxquest-cloud \
+            --delete \
+            --exclude ".git/*" \
+            --exclude ".github/*" \
+            --exclude "*.md" \
+            --exclude "STYLE.md" \
+            --exclude "CLAUDE.md" \
+            --exclude "CONTRIBUTING.md" \
+            --exclude "LICENSE"
+
+      - name: Invalidate CloudFront cache
+        run: |
+          aws cloudfront create-invalidation \
+            --distribution-id E182NK0Q0YDNT3 \
+            --paths "/*"
