@@ -3,7 +3,7 @@
 **Free, open source, hands-on Linux and DevOps practice scenarios.**  
 No login. No cost. No setup beyond opening a browser.
 
-[Live Site](https://hassanabdullahhere.github.io/linux-quest/) · [Report a Bug](https://github.com/HassanAbdullahHere/linux-quest/issues) · [Request a Scenario](https://github.com/HassanAbdullahHere/linux-quest/issues)
+[Live Site](https://linuxquest.online) · [Report a Bug](https://github.com/HassanAbdullahHere/linux-quest/issues) · [Request a Scenario](https://github.com/HassanAbdullahHere/linux-quest/issues)
 
 ---
 
@@ -52,10 +52,21 @@ Guided multi-step series that run on a real cloud VPS (AWS EC2).
 | Styles | Vanilla CSS (`assets/css/style.css`) |
 | Logic | Vanilla JS — no frameworks, no bundler |
 | Data | Static JSON files under `scenarios/` |
-| Hosting | GitHub Pages |
+| Hosting | AWS S3 + CloudFront |
 | Dependencies | None |
 
 Opens directly as a file — no `npm install`, no build step, no server needed.
+
+---
+
+## Infrastructure
+
+- Hosted on **AWS S3** with versioning and server-side encryption
+- Served globally via **CloudFront CDN** with HTTPS
+- Custom domain: **[linuxquest.online](https://linuxquest.online)**
+- CI/CD via **GitHub Actions** with HTML validation quality gates
+- Zero stored credentials — GitHub Actions authenticates via **IAM OIDC**
+- Automatic cache invalidation on every deployment
 
 ---
 
