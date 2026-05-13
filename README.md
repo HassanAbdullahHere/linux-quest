@@ -1,4 +1,21 @@
-# LinuxQuest
+<p align="center">
+  <img src="assets/banner.svg" alt="LinuxQuest" width="100%">
+</p>
+
+<p align="center">
+  <a href="https://github.com/HassanAbdullahHere/linux-quest/actions/workflows/deploy.yml">
+    <img src="https://img.shields.io/github/actions/workflow/status/HassanAbdullahHere/linux-quest/deploy.yml?style=for-the-badge&label=DEPLOY&logo=amazonaws&logoColor=white&color=76b900&labelColor=000000" alt="Deploy">
+  </a>
+  <a href="https://linuxquest.online">
+    <img src="https://img.shields.io/website?url=https%3A%2F%2Flinuxquest.online&style=for-the-badge&label=LINUXQUEST.ONLINE&color=76b900&labelColor=000000" alt="Website">
+  </a>
+  <a href="https://github.com/HassanAbdullahHere/linux-quest/blob/main/LICENSE">
+    <img src="https://img.shields.io/badge/LICENSE-MIT-76b900?style=for-the-badge&labelColor=000000" alt="License">
+  </a>
+  <img src="https://img.shields.io/badge/DEPENDENCIES-NONE-76b900?style=for-the-badge&labelColor=000000" alt="No dependencies">
+</p>
+
+---
 
 **Free, open source, hands-on Linux and DevOps practice scenarios.**  
 No login. No cost. No setup beyond opening a browser.
@@ -18,8 +35,19 @@ LinuxQuest drops you into realistic sysadmin and DevOps situations — a crashed
 - A fully numbered, copy-pasteable **solution** hidden behind a toggle
 - A **Mark Complete** button backed by `localStorage` so your progress persists
 
+---
+
 No accounts. No tracking. Just practice.
 
+## Infrastructure
+
+- Hosted on **AWS S3** with versioning and server-side encryption (SSE-S3)
+- Served globally via **CloudFront CDN** with HTTPS and TLS 1.3
+- Custom domain: **[linuxquest.online](https://linuxquest.online)**
+- CI/CD via **GitHub Actions** — HTML validation quality gate runs before every deployment
+- Zero stored credentials — GitHub Actions authenticates via **IAM OIDC** with least privilege role
+- Automatic CloudFront cache invalidation on every deployment
+- DNS managed via Namecheap with ACM certificate auto-renewal
 ---
 
 ## Content
@@ -56,17 +84,6 @@ Guided multi-step series that run on a real cloud VPS (AWS EC2).
 | Dependencies | None |
 
 Opens directly as a file — no `npm install`, no build step, no server needed.
-
----
-
-## Infrastructure
-
-- Hosted on **AWS S3** with versioning and server-side encryption
-- Served globally via **CloudFront CDN** with HTTPS
-- Custom domain: **[linuxquest.online](https://linuxquest.online)**
-- CI/CD via **GitHub Actions** with HTML validation quality gates
-- Zero stored credentials — GitHub Actions authenticates via **IAM OIDC**
-- Automatic cache invalidation on every deployment
 
 ---
 

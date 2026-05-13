@@ -1,0 +1,51 @@
+<svg width="1280" height="320" viewBox="0 0 1280 320" xmlns="http://www.w3.org/2000/svg">
+
+  <defs>
+    <pattern id="dots" width="32" height="32" patternUnits="userSpaceOnUse">
+      <circle cx="1" cy="1" r="1" fill="#ffffff"/>
+    </pattern>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1280" height="320" fill="#000000"/>
+
+  <!-- Dot grid texture -->
+  <rect width="1280" height="320" fill="url(#dots)" opacity="0.04"/>
+
+  <!-- Top accent line -->
+  <rect width="1280" height="2" fill="#76b900"/>
+
+  <!-- Bottom accent line -->
+  <rect y="318" width="1280" height="2" fill="#76b900" opacity="0.25"/>
+
+  <!-- ── Terminal icon: 150×150 at (70, 85) ── -->
+  <rect x="70" y="85" width="150" height="150" rx="12" fill="#0d0d0d" stroke="#76b900" stroke-width="2"/>
+  <!-- blinking cursor -->
+  <rect x="100" y="198" width="34" height="4" fill="#76b900" opacity="0.5"/>
+  <!-- prompt chevron › -->
+  <path d="M104 135 L134 157 L104 180" fill="none" stroke="#76b900" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- Vertical separator -->
+  <rect x="265" y="90" width="1.5" height="140" fill="#76b900" opacity="0.35"/>
+
+  <!-- LINUX (white) -->
+  <text x="292" y="148" font-family="'Courier New', Courier, monospace" font-size="80" font-weight="700" letter-spacing="8" fill="#f0f0fa">LINUX</text>
+
+  <!-- QUEST (green) -->
+  <text x="292" y="228" font-family="'Courier New', Courier, monospace" font-size="80" font-weight="700" letter-spacing="8" fill="#76b900">QUEST</text>
+
+  <!-- Tagline -->
+  <text x="292" y="264" font-family="'Courier New', Courier, monospace" font-size="12" letter-spacing="2.5" fill="#f0f0fa" opacity="0.38">FREE · OPEN SOURCE · HANDS-ON LINUX &amp; DEVOPS PRACTICE</text>
+
+  <!-- ── Faint terminal lines (decorative) ── -->
+  <text x="680" y="118" font-family="'Courier New', Courier, monospace" font-size="12.5" fill="#76b900" opacity="0.22">$ sudo nginx -t</text>
+  <text x="680" y="140" font-family="'Courier New', Courier, monospace" font-size="12.5" fill="#f0f0fa" opacity="0.13">nginx: [warn] conflicting server name "localhost"</text>
+  <text x="680" y="162" font-family="'Courier New', Courier, monospace" font-size="12.5" fill="#f0f0fa" opacity="0.13">nginx: configuration file /etc/nginx/nginx.conf test failed</text>
+  <text x="680" y="184" font-family="'Courier New', Courier, monospace" font-size="12.5" fill="#76b900" opacity="0.22">$ journalctl -xe --unit=nginx | tail -5</text>
+  <text x="680" y="206" font-family="'Courier New', Courier, monospace" font-size="12.5" fill="#f0f0fa" opacity="0.13">May 13 10:42:01 vps nginx[2847]: Address already in use</text>
+  <text x="680" y="228" font-family="'Courier New', Courier, monospace" font-size="12.5" fill="#76b900" opacity="0.22">$ ss -tlnp | grep :80</text>
+  <text x="680" y="250" font-family="'Courier New', Courier, monospace" font-size="12.5" fill="#f0f0fa" opacity="0.13">LISTEN 0  511  0.0.0.0:80  users:(("apache2",pid=1337))</text>
+  <text x="680" y="272" font-family="'Courier New', Courier, monospace" font-size="12.5" fill="#76b900" opacity="0.22">$ sudo systemctl stop apache2 &amp;&amp; sudo nginx -t</text>
+  <text x="680" y="294" font-family="'Courier New', Courier, monospace" font-size="12.5" fill="#76b900" opacity="0.35">$ █</text>
+
+</svg>
