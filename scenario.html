@@ -117,6 +117,36 @@
 
       </div><!-- /sp-body -->
     </div><!-- /sp-inner -->
+  
+  <!-- ── Share Section ──────────────────────────────── -->
+<div class="share-section">
+  <p style="margin-bottom: 8px; font-weight: bold;">Share this scenario:</p>
+  <button onclick="copyScenarioLink()">🔗 Copy Link</button>
+  <a id="twitterShare" href="#" target="_blank" rel="noopener">🐦 Share on X</a>
+  <a id="linkedinShare" href="#" target="_blank" rel="noopener">💼 Share on LinkedIn</a>
+</div>
+
+<script>
+function copyScenarioLink() {
+  navigator.clipboard.writeText(window.location.href).then(() => {
+    alert("Link copied! 🎉");
+  });
+}
+
+function updateShareLinks() {
+  const url = encodeURIComponent(window.location.href);
+  const params = new URLSearchParams(window.location.search);
+  const scenarioId = params.get('id') || 'this scenario';
+  const msg = encodeURIComponent("I just completed '" + scenarioId + "' on LinuxQuest 🚀");
+
+  document.getElementById('twitterShare').href =
+    'https://twitter.com/intent/tweet?text=' + msg + '&url=' + url;
+  document.getElementById('linkedinShare').href =
+    'https://www.linkedin.com/sharing/share-offsite/?url=' + url;
+}
+
+updateShareLinks();
+</script>   
   </main>
 
   <!-- ── Footer ─────────────────────────────────────────────────────── -->
