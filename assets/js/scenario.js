@@ -556,14 +556,6 @@ function copyScenarioLink() {
   }
 }
 
-function openLinkedInShare() {
-  const url = encodeURIComponent(window.location.href);
-  window.open(
-    'https://www.linkedin.com/sharing/share-offsite/?url=' + url,
-    'linkedin-share',
-    'width=600,height=600,left=200,top=100,scrollbars=yes'
-  );
-}
 
 function updateShareLinks() {
   const url = encodeURIComponent(window.location.href);

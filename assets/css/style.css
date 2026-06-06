@@ -1872,9 +1872,3 @@ a.tsc-card:hover .tsc-cta .arrow { transform: translateX(4px); }
   color: #fff;
   border-color: #333;
 }
-
-.share-btn--linkedin {
-  background: #0A66C2;
-  color: #fff;
-  border-color: #0A66C2;
-}
