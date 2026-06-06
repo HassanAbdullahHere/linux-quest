@@ -538,33 +538,3 @@ async function init() {
 }
 
 document.addEventListener('DOMContentLoaded', init);
-
-// Share Section
-function copyScenarioLink() {
-  const btn = document.getElementById('shareCopyBtn');
-  const text = window.location.href;
-  if (typeof copyCmd === 'function' && btn) {
-    copyCmd(btn, text);
-    return;
-  }
-  if (navigator.clipboard) {
-    navigator.clipboard.writeText(text).then(() => {
-      if (btn) { btn.textContent = 'Copied!'; setTimeout(() => { btn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg> Copy Link'; }, 2000); }
-    }).catch(() => {
-      alert('Could not copy. Please copy the URL manually.');
-    });
-  }
-}
-
-
-function updateShareLinks() {
-  const url = encodeURIComponent(window.location.href);
-  const params = new URLSearchParams(window.location.search);
-  const scenarioId = params.get('id') || 'this scenario';
-  const msg = encodeURIComponent("I just completed '" + scenarioId + "' on LinuxQuest 🚀");
-
-  const twitterBtn = document.getElementById('twitterShare');
-  if (twitterBtn) twitterBtn.href = 'https://twitter.com/intent/tweet?text=' + msg + '&url=' + url;
-}
-
-updateShareLinks();
