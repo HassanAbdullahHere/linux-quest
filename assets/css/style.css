@@ -1856,6 +1856,8 @@ a.tsc-card:hover .tsc-cta .arrow { transform: translateX(4px); }
   transition: opacity 0.15s, transform 0.1s;
   white-space: nowrap;
   line-height: 1;
+  -webkit-appearance: none;
+  appearance: none;
 }
 
 .share-btn:hover  { opacity: 0.85; transform: translateY(-1px); }
