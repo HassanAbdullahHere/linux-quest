@@ -541,7 +541,7 @@ document.addEventListener('DOMContentLoaded', init);
 
 // Share Section
 function copyScenarioLink() {
-  const btn = document.querySelector('.share-section button');
+  const btn = document.getElementById('shareCopyBtn');
   const text = window.location.href;
   if (typeof copyCmd === 'function' && btn) {
     copyCmd(btn, text);
@@ -549,11 +549,20 @@ function copyScenarioLink() {
   }
   if (navigator.clipboard) {
     navigator.clipboard.writeText(text).then(() => {
-      alert("Link copied! 🎉");
+      if (btn) { btn.textContent = 'Copied!'; setTimeout(() => { btn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg> Copy Link'; }, 2000); }
     }).catch(() => {
-      alert("Could not copy link. Please copy manually.");
+      alert('Could not copy. Please copy the URL manually.');
     });
   }
+}
+
+function openLinkedInShare() {
+  const url = encodeURIComponent(window.location.href);
+  window.open(
+    'https://www.linkedin.com/sharing/share-offsite/?url=' + url,
+    'linkedin-share',
+    'width=600,height=600,left=200,top=100,scrollbars=yes'
+  );
 }
 
 function updateShareLinks() {
@@ -563,10 +572,7 @@ function updateShareLinks() {
   const msg = encodeURIComponent("I just completed '" + scenarioId + "' on LinuxQuest 🚀");
 
   const twitterBtn = document.getElementById('twitterShare');
-  const linkedinBtn = document.getElementById('linkedinShare');
-
   if (twitterBtn) twitterBtn.href = 'https://twitter.com/intent/tweet?text=' + msg + '&url=' + url;
-  if (linkedinBtn) linkedinBtn.href = 'https://www.linkedin.com/sharing/share-offsite/?url=' + url;
 }
 
 updateShareLinks();
