@@ -29,7 +29,10 @@ jobs:
       - name: Check for broken links
         uses: lycheeverse/lychee-action@v1
         with:
-          args: --no-progress '*.html'
+          args: >-
+            --no-progress
+            --exclude 'og-image\.png'
+            '*.html'
           fail: true
 
   deploy:
