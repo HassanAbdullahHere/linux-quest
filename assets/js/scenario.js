@@ -538,3 +538,35 @@ async function init() {
 }
 
 document.addEventListener('DOMContentLoaded', init);
+
+// Share Section
+function copyScenarioLink() {
+  const btn = document.querySelector('.share-section button');
+  const text = window.location.href;
+  if (typeof copyCmd === 'function' && btn) {
+    copyCmd(btn, text);
+    return;
+  }
+  if (navigator.clipboard) {
+    navigator.clipboard.writeText(text).then(() => {
+      alert("Link copied! 🎉");
+    }).catch(() => {
+      alert("Could not copy link. Please copy manually.");
+    });
+  }
+}
+
+function updateShareLinks() {
+  const url = encodeURIComponent(window.location.href);
+  const params = new URLSearchParams(window.location.search);
+  const scenarioId = params.get('id') || 'this scenario';
+  const msg = encodeURIComponent("I just completed '" + scenarioId + "' on LinuxQuest 🚀");
+
+  const twitterBtn = document.getElementById('twitterShare');
+  const linkedinBtn = document.getElementById('linkedinShare');
+
+  if (twitterBtn) twitterBtn.href = 'https://twitter.com/intent/tweet?text=' + msg + '&url=' + url;
+  if (linkedinBtn) linkedinBtn.href = 'https://www.linkedin.com/sharing/share-offsite/?url=' + url;
+}
+
+updateShareLinks();

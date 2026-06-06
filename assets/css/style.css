@@ -1813,3 +1813,37 @@ a.tsc-card:hover .tsc-cta .arrow { transform: translateX(4px); }
 }
 
 .sp-next-btn:hover .arrow { transform: translateX(4px); }
+
+/* Share Section */
+.share-section {
+  padding: 20px 24px;
+  margin: 24px 0;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.share-section p {
+  color: #ccc;
+  margin: 0 8px 0 0;
+}
+
+.share-section button,
+.share-section a {
+  padding: 8px 16px;
+  border-radius: 6px;
+  background: #1e2327;
+  color: #fff;
+  text-decoration: none;
+  border: 1px solid #444;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background 0.2s;
+}
+
+.share-section button:hover,
+.share-section a:hover {
+  background: #2ea043;
+  border-color: #2ea043;
+}
