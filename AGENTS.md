@@ -146,6 +146,116 @@ Tracks unlock when previous scenario is marked complete.
 A "Reset Track" button clears all keys for that track.
 Always provide a "Skip prerequisites" option so users are never blocked.
 
+## Product roadmap
+Goal: make LinuxQuest feel like a guided Linux practice system, not just
+a list of scenarios. Prioritize upgrades that help users know where to
+start, what to do next, and why each scenario is worth practicing.
+
+### Core work we will handle first
+These are product, architecture, and experience decisions. Keep them
+owned by the core project before opening broad contributor work.
+
+1. Trust and promise cleanup
+   - Decide and align the final stance on tracking, external embeds,
+     hosting, and the "open index.html directly" promise.
+   - If the site says "no tracking", remove analytics/tracking scripts.
+   - If the site must work from file://, avoid fetch-only JSON loading or
+     provide an embedded static data path.
+
+2. Scenario schema upgrade
+   Add optional fields that improve learning quality:
+   - estimated_time
+   - skills
+   - environment
+   - verification
+   - common_mistakes
+   - cleanup
+
+3. Homepage training dashboard
+   Rework the landing page flow toward:
+   - Hero with clear value proposition
+   - Continue where you left off
+   - Start Here path
+   - Recommended scenarios
+   - Tracks
+   - Skill paths
+   - All standalone scenarios
+
+4. Start Here journey
+   Add a curated beginner path so new users know the best first scenarios
+   and do not feel dropped into an unordered library.
+
+5. Scenario card upgrades
+   Show useful metadata on cards:
+   - estimated time
+   - skills practiced
+   - environment
+   - difficulty
+   - completion status
+   - recommended next badge when relevant
+
+6. Scenario page mission flow
+   Reorder and polish the scenario page around a practical workflow:
+   - context / mission brief
+   - setup
+   - task
+   - hints
+   - useful commands
+   - solution
+   - mark complete
+   - next recommended scenario
+
+7. Progress dashboard
+   Make local progress more visible:
+   - completed scenario count
+   - current track progress
+   - recommended next scenario
+   - recently completed scenarios
+
+8. Skill paths and search
+   Add a way to browse and search scenarios by command, skill, difficulty,
+   environment, and track.
+
+9. Track campaign experience
+   Make each track feel like a complete learning campaign with:
+   - final outcome
+   - prerequisites
+   - total estimated time
+   - scenario map
+   - progress
+   - reset and skip-prerequisite controls
+
+10. Completion and retention loop
+    After a scenario is completed, always show a useful next step instead
+    of leaving the user at a dead end.
+
+### Contributor issues to open now
+These are independent enough to open before the schema/UI upgrade.
+
+1. Add new standalone scenarios using the current schema.
+2. Propose new track ideas with scenario outlines.
+3. Improve README screenshots or GIFs.
+4. Open scenario-request issues for future content ideas.
+5. Report specific mobile UI polish problems with screenshots.
+
+### Contributor issues to open after schema/UI upgrade
+Open these after the new fields are defined and displayed by the UI.
+
+1. Add estimated_time to existing scenarios.
+2. Add skills arrays to existing scenarios.
+3. Add verification goals to existing scenarios.
+4. Add common_mistakes to existing scenarios.
+5. Add cleanup/reset commands to existing scenarios.
+6. Expand existing tracks with stronger metadata and verification.
+
+### Suggested future tracks
+- Linux First Week
+- Server Debugging Bootcamp
+- Nginx From Zero
+- Docker For Real Deployments
+- Bash Automation
+- Security Incident Response
+
 ## Style
 - Refer to STYLE.md
 
